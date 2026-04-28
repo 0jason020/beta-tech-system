@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback Form</title>
+    <style>
+        :root {
+            --forest: #1f5c3f;
+            --pine: #2e7d52;
+            --leaf: #4ea672;
+            --mist: #edf8f0;
+            --sage: #d3ead8;
+            --ink: #173126;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(126, 201, 146, 0.35), transparent 35%),
+                linear-gradient(135deg, #0f2b1e, #1f5c3f 55%, #6dc08d);
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .form-card {
+            width: min(100%, 720px);
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 24px 70px rgba(10, 37, 24, 0.28);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            color: var(--forest);
+        }
+
+        .intro {
+            margin: 0 0 28px;
+            color: rgba(23, 49, 38, 0.8);
+            line-height: 1.5;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        label,
+        .group-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--forest);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #b8d8c0;
+            border-radius: 14px;
+            background: var(--mist);
+            font: inherit;
+            color: var(--ink);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--leaf);
+            box-shadow: 0 0 0 4px rgba(78, 166, 114, 0.18);
+            transform: translateY(-1px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .choice-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: var(--mist);
+            border: 1px solid transparent;
+        }
+
+        .choice-card:hover {
+            border-color: #9dceac;
+            background: #f5fcf7;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            accent-color: var(--pine);
+            width: 18px;
+            height: 18px;
+            margin: 0;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            border: 0;
+            border-radius: 16px;
+            padding: 16px 18px;
+            font: inherit;
+            font-weight: 800;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--forest), var(--leaf));
+            cursor: pointer;
+            box-shadow: 0 16px 36px rgba(31, 92, 63, 0.28);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 42px rgba(31, 92, 63, 0.34);
+        }
+
+        @media (max-width: 640px) {
+            .form-card {
+                padding: 24px;
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-card">
+        <h2>Customer Feedback Form</h2>
+        <p class="intro">Share your experience with us. This green-styled form keeps the layout simple while giving it a fresher, more polished look.</p>
+
+        <form>
+            <div class="field-group">
+                <label for="name">Full Name</label>
+                <input id="name" type="text" name="name" required>
+            </div>
+
+            <div class="field-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required>
+            </div>
+
+            <div class="field-group">
+                <span class="group-label">Rate Our Service</span>
+                <div class="choice-grid">
+                    <label class="choice-card"><input type="radio" name="rating" value="excellent"> Excellent</label>
+                    <label class="choice-card"><input type="radio" name="rating" value="good"> Good</label>
+                    <label class="choice-card"><input type="radio" name="rating" value="average"> Average</label>
+                    <label class="choice-card"><input type="radio" name="rating" value="poor"> Poor</label>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <span class="group-label">Services Used</span>
+                <div class="choice-grid">
+                    <label class="choice-card"><input type="checkbox" name="service" value="web"> Web Development</label>
+                    <label class="choice-card"><input type="checkbox" name="service" value="mobile"> Mobile App</label>
+                    <label class="choice-card"><input type="checkbox" name="service" value="design"> UI/UX Design</label>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="comments">Comments</label>
+                <textarea id="comments" name="comments" rows="4" cols="30" required></textarea>
+            </div>
+
+            <div class="field-group">
+                <label for="visit-date">Visit Date</label>
+                <input id="visit-date" type="date" name="visit_date">
+            </div>
+
+            <input type="submit" value="Submit Feedback">
+        </form>
+    </div>
+</body>
+</html>
